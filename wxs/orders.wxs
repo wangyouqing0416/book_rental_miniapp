@@ -1,0 +1,17 @@
+var fmtStatus = function(status) {
+  if (-1 == status) {
+    return '待处理';
+  }
+  if (0 == status) {
+    return '已发货';
+  }
+  if (10 == status) {
+    return '已完成';
+  }
+
+  return '';
+}
+
+module.exports = {
+  fmtStatus: fmtStatus
+}
