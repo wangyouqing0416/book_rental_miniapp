@@ -1,0 +1,26 @@
+<view>
+  <block wx:for="{{list}}" wx:key="id">
+    <view class='one'>
+      <view class='viewinfo'>
+        <view class='font-30 ellipsis'>{{item.remark}}</view>
+        <view class='font-30 font-gray'>{{item.createTime}}</view>
+      </view>
+      <view>
+        <view class="money {{item.flag == '1' ? 'font-success' : 'font-dark-orange'}}">
+          {{item.flag == '1' ? '+' : '-'}}{{item.money}}
+          <text class='font-24'> 元</text>
+        </view>
+        <view class='font-24 font-gray'>余额：{{item.total}}</view>
+      </view>
+    </view>
+  </block>
+  <!-- 空视图 -->
+  <block wx:if="{{list.length == 0}}">
+    <view class='none-view flex'>
+      <view>
+        <image class="empty-view-img" src="/image/no_data.png" />
+        <view class='empty-view-text'>暂无数据</view>
+      </view>
+    </view>
+  </block>
+</view>
