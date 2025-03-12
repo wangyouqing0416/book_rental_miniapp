@@ -1,0 +1,66 @@
+{
+  "pages": [
+    "pages/splash/splash",
+    "pages/revertList/revertList",
+    "pages/revertDetail/revertDetail",
+    "pages/bookDetail/bookDetail",
+    "pages/evaluate/evaluate",
+    "pages/ordersDetail/ordersDetail",
+    "pages/revertSuccess/revertSuccess",
+    "pages/revert/revert",
+    "pages/assetDetail/assetDetail",
+    "pages/borrowList/borrowList",
+    "pages/ordersList/ordersList",
+    "pages/me/me",
+    "pages/setPhone/setPhone",
+    "pages/ordersBuy/ordersBuy",
+    "pages/index/index",
+    "pages/bookType/bookType",
+    "pages/shoppingCart/shoppingCart",
+    "pages/paySuccess/paySuccess",
+    "pages/auth/auth",
+    "pages/bookSearch/bookSearch",
+    "pages/bookList/bookList"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#1890ff",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "selectedColor": "#1890ff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "image/home.png",
+        "selectedIconPath": "image/home_focus.png"
+      },
+      {
+        "pagePath": "pages/bookType/bookType",
+        "text": "分类",
+        "iconPath": "image/bookType.png",
+        "selectedIconPath": "image/bookType_focus.png"
+      },
+      {
+        "pagePath": "pages/shoppingCart/shoppingCart",
+        "text": "购物车",
+        "iconPath": "image/car.png",
+        "selectedIconPath": "image/car_focus.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "image/me.png",
+        "selectedIconPath": "image/me_focus.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}
