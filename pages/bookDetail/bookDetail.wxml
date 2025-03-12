@@ -1,0 +1,73 @@
+<view>
+  <view class='margin-bottom-btn'>
+    <view class='head divider'>
+      <image src='{{server + book.cover}}'></image>
+      <view class='font-35 pd30'>{{book.name}}</view>
+      <view class='font-30 font-gray'>作者：{{book.author}}</view>
+    </view>
+
+    <view class='m-container divider'>
+      <view class='title bold'>租借信息</view>
+      <view class='pdb10 font-30'>租金：
+        <text class='font-dark-orange font-bold font-35'>￥{{book.price}}</text> 元
+      </view>
+      <view class='pdb10 font-30'>押金：
+        <text class='font-dark-orange font-bold font-35'>￥{{book.deposit}}</text> 元
+      </view>
+      <view class='pdb10 font-30'>租期：
+        <text class='font-theme font-bold font-35'>{{book.deadline}}</text> 天
+      </view>
+      <view class='pdb10 font-30'>库存：
+        <text class='font-theme font-bold font-35'>{{book.store}}</text> 本
+        <!-- <block wx:if='{{book.store == 0}}'>
+          <text class='mini-btn-disable' wx:if='{{book.notice}}'>已设置到馆提醒</text>
+          <text class='mini-btn' wx:else>到馆提醒</text>
+        </block> -->
+      </view>
+    </view>
+
+    <view class='m-container'>
+      <view class='title bold'>内容简介</view>
+      <view class='font-30'>{{book.description}}</view>
+    </view>
+
+    <view class='m-container'>
+      <view class='title bold'>书籍详情</view>
+      <view class='pdb10 font-30'>出版社：{{book.publisher}}</view>
+      <view class='pdb10 font-30'>出版时间：{{book.publishTime}}</view>
+    </view>
+
+    <view class='m-container'>
+      <view class='title bold flex flex-space-between'>
+        <view>评论</view>
+        <view class='mini-btn' bindtap='evaluate'>我要评论</view>
+      </view>
+      <block wx:for='{{book.evaluateList}}' :key="id">
+        <view class='evaluate-item'>
+          <view class='evaluate-content font-35'>
+            <view>{{item.content}}</view>
+            <view class='font-gray font-30 text-right pdt20'>
+              <view>{{item.nickName}}发表于：{{item.shortTime}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+      <view class='font-30 font-gray text-center' wx:if='{{book.evaluateList.length == 0}}'>暂无评论</view>
+    </view>
+
+  </view>
+
+  <view class='bottom-layout'>
+    <!-- <view class='btn-hollow' bindtap='addIntoCar'>分享</view> -->
+    <button class='btn btn-hollow' open-type='share'>分享</button>
+    <block wx:if='{{book.store > 0}}'>
+      <view class='btn btn-hollow-disable' wx:if="{{book.isBorrow}}">已在购物车</view>
+      <view class='btn btn-hollow' wx:else bindtap='addIntoCar'>加入购物车</view>
+      <view class='btn btn-solid' bindtap='borrow'>我要租借</view>
+    </block>
+    <block wx:else>
+      <view class='btn btn-hollow-disable' wx:if="{{book.isNotice}}">紧急备货中，到馆立马提醒您</view>
+      <view class='btn btn-hollow' wx:else bindtap='setNotice'>库存没有啦，点我到货提醒您</view>
+    </block>
+  </view>
+</view>
