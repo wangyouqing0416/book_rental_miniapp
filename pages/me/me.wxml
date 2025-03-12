@@ -1,0 +1,60 @@
+<view>
+  <view class='header shadow'>
+    <view class='header-left'>
+      <image src='{{wxUser.avatarUrl}}' class='portrait portrait-round'></image>
+    </view>
+    <view class='header-center'>
+      <view class='font-35'>{{wxUser.nickName}}</view>
+    </view>
+    <view class='asset'>
+      <text class='font-30'>余额：</text>
+      <text class='font-bold'>￥{{asset}}</text>
+    </view>
+  </view>
+
+  <view class='block shadow' wx:if='{{logisticsOrderList.length > 0}}'>
+    <view class='block-title'>运输中</view>
+    <swiper indicator-dots="true" autoplay="true" interval="4000" duration="500" circular="true">
+      <block wx:for='{{logisticsOrderList}}' wx:key='id'>
+        <swiper-item>
+          <view class='logistics' data-id='{{item.id}}' bindtap='toOrdersDetail'>
+            <image src='/image/transport.png'></image>
+            <view class='logistics-content'>
+              <view class='top font-35 ellipsis'>订单：{{item.ordersName}}</view>
+              <view class='footer font-gray font-30 ellipsis'>{{item.logistics}}</view>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <view class='block shadow'>
+    <view class='block-title'>我的订单</view>
+    <view class='btn-group flex'>
+      <view class='btn hover' data-page-url='/pages/borrowList/borrowList' data-page-title='我租借的' bindtap='toPage'>
+        <image src='/image/my_borrow.png'></image>
+        <view class='btn-text'>我租借的</view>
+      </view>
+      <view class='btn hover' data-page-url='/pages/ordersList/ordersList' data-page-title='租书单' bindtap='toPage'>
+        <image src='/image/borrow.png'></image>
+        <view class='btn-text'>租书单</view>
+      </view>
+      <view class='btn hover' data-page-url='/pages/revertList/revertList' data-page-title='还书单' bindtap='toPage' bindtap='toPage'>
+        <image src='/image/send_back.png'></image>
+        <view class='btn-text'>还书单</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='block shadow'>
+    <view class='block-title'>账单</view>
+    <view class='btn-group flex'>
+      <view class='btn hover' data-page-url='/pages/assetDetail/assetDetail' data-page-title='资金明细' bindtap='toPage'>
+        <image src='/image/asset_detail.png'></image>
+        <view class='btn-text'>资金明细</view>
+      </view>
+    </view>
+  </view>
+
+</view>
