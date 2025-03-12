@@ -1,0 +1,92 @@
+<view>
+  <view class='margin-bottom-btn'>
+
+    <view class='m-section shadow'>
+      <view class='section-title'>请填写</view>
+      <view class='section-content'>
+        <view class='row'>
+          <text class='row-lable'>物流单号</text>
+          <input placeholder='请输入物流单号' data-type='0' bindinput='formInput' bindblur='getExpress' value='{{logisticsNo}}'></input>
+          <image class='input-icon' src='/image/scan.png' bindtap='scan'></image>
+        </view>
+        <view class='row'>
+          <text class='row-lable'>快递公司</text>
+          <input placeholder='{{deliveryCompanyPlaceholder}}' value='{{deliveryCompany.cname}}' disabled='disabled'></input>
+        </view>
+      </view>
+    </view>
+
+    <view class='m-section shadow'>
+      <view class='section-title'>结算单</view>
+      <view class='section-content'>
+        <view class='row'>
+          <text class='row-lable'>租期</text>
+          <text>{{borrow.borrowDay}} 天</text>
+          <text class='font-gray'>（{{borrow.borrowStart}} ~ {{borrow.borrowEnd}}）</text>
+        </view>
+        <view wx:if='{{borrow.isDelay}}'>
+          <view class='row'>
+            <text class='row-lable'>逾期</text>
+            <text>{{borrow.delay}} 天</text>
+            <text class='font-gray'>（租期截止：{{borrow.shortDeadline}}）</text>
+          </view>
+          <view class='row'>
+            <text class='row-lable'>逾期费用</text>
+            <text class='font-dark-orange font-bold'>￥{{borrow.delayCost}}</text>
+          </view>
+        </view>
+        <view class='row'>
+          <text class='row-lable'>应退还押金</text>
+          <text class='font-dark-orange font-bold'>￥{{borrow.depositLess}}</text>
+          <text class='font-gray'>（押金：￥{{borrow.deposit}}）</text>
+        </view>
+      </view>
+    </view>
+
+    <view class='m-section shadow'>
+      <view class='section-title'>商品信息</view>
+      <view class='section-content'>
+        <view class='list-item'>
+          <image src='{{server + borrow.bookCover}}'></image>
+          <view class='item-content'>
+            <view class='item-title font-35'>
+              <view>{{borrow.bookName}}</view>
+              <view>x1</view>
+            </view>
+            <view class='item-footer font-30'>
+              <view class='font-gray'>租金:￥{{borrow.price}},押金:￥{{borrow.deposit}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='section-footer'>
+        <view class='text-right font-35'>
+          合计：
+          <text class='font-bold font-40'>￥{{borrow.totalPrice}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class='m-section shadow'>
+      <view class='section-title'>收件人信息</view>
+      <view class='section-content'>
+        <view class='row'>
+          <text class='row-lable'>收件人</text>
+          <text>{{receiver.receiver}}</text>
+        </view>
+        <view class='row'>
+          <text class='row-lable'>联系电话</text>
+          <text>{{receiver.phone}}</text>
+        </view>
+        <view class='row'>
+          <text class='row-lable'>收件地址</text>
+          <text>{{receiver.address}}</text>
+        </view>
+      </view>
+    </view>
+
+  </view>
+  <view class='bottom-layout bottom-layout-divider flex flex-right bg-white'>
+    <view class='btn-solid' bindtap='confirm'>提交订单</view>
+  </view>
+</view>
