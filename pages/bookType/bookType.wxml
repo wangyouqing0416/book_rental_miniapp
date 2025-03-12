@@ -1,0 +1,9 @@
+<view>
+  <view class='list'>
+    <block wx:for='{{list}}' wx:key='id'>
+      <view class='list-item hover' data-type-id='{{item.id}}' data-type-name='{{item.name}}' bindtap='toList'>
+        <view class='item-title'>{{item.name}}</view>
+      </view>
+    </block>
+  </view>
+</view>
