@@ -1,0 +1,27 @@
+<view>
+  <view class='search-box'>
+    <input placeholder='书名、作者' value='{{param}}' bindinput='input'></input>
+  </view>
+
+  <view class='pd20'>热门搜索</view>
+  <view class='hot-search'>
+    <block wx:for='{{hotSearch}}' wx:key='id'>
+      <view data-param='{{item}}' bindtap='search'>{{item}}</view>
+    </block>
+  </view>
+
+  <view class='pd20'>搜索结果</view>
+  <view class='datalist'>
+    <block wx:for='{{list}}' wx:key='id'>
+      <view class='list-item hover' data-id='{{item.id}}' bindtap='toDetail'>
+        <image class='item-icon' src='{{server + item.cover}}'></image>
+        <view class='item-content'>
+          <view class='item-title font-35'>{{item.name}}</view>
+          <view class='item-desc font-30 font-gray'>{{item.description}}</view>
+          <view class='item-footer font-30 font-gray'>作者：{{item.author}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+</view>
