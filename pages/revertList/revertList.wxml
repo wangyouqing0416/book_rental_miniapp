@@ -1,0 +1,48 @@
+<view>
+  <view class='tabs'>
+    <view class='tab {{activeIndex == 0 ? "active":""}}' data-index='0' bindtap='tabClick'>全部</view>
+    <view class='tab {{activeIndex == 1 ? "active":""}}' data-index='1' bindtap='tabClick'>还书中</view>
+    <view class='tab {{activeIndex == 2 ? "active":""}}' data-index='2' bindtap='tabClick'>已完成</view>
+  </view>
+  <view class='tab-content'>
+    <swiper indicator-dots="{{false}}" current='{{activeIndex}}' bindchange='swiperChange'>
+      <swiper-item wx:for='{{[1,2,3,4]}}' wx:for-item='swiper' wx:key='id'>
+        <block wx:for='{{activeIndex == 0 ? allList : activeIndex == 1 ? waitList : doneList}}' wx:key='id'>
+          <view class='card hover shadow' data-id='{{item.id}}' catchtap="toDetail">
+            <view class='card-title'>
+              <view>订单号：{{item.ordersNo}}</view>
+              <view class='{{item.status == 1 ? "font-success" : "font-dark-orange"}}'>
+                {{item.status == 0 ? '还书中' : '已完成'}}
+              </view>
+            </view>
+            <view class='card-content'>
+              <view class='block'>
+                <image src='{{server + item.bookCover}}'></image>
+                <view class='block-content'>
+                  <view class='font-35'>{{item.bookName}}</view>
+                  <view class='abs-bottom font-30 font-dark-orange font-bold'>
+                    应退回押金：￥{{item.revertMoney}}
+                  </view>
+                </view>
+              </view>
+              <view class='font-30 font-gray text-right'>{{item.createTime}}</view>
+            </view>
+            <view class='card-footer'>
+              <view class='font-30'>物流单号： {{item.logisticsNo}}（{{item.deliveryCompanyName}}） </view>
+            </view>
+          </view>
+        </block>
+        <!-- 空视图 -->
+        <block wx:if="{{activeIndex == 0 ? allList.length == 0 : activeIndex == 1 ? waitList.length == 0 : doneList.length == 0}}">
+          <view class='none-view flex'>
+            <view>
+              <image class="empty-view-img" src="/image/no_data.png" />
+              <view class='empty-view-text'>暂无数据</view>
+            </view>
+          </view>
+        </block>
+
+      </swiper-item>
+    </swiper>
+  </view>
+</view>
