@@ -1,0 +1,115 @@
+page {
+  background-color: #f3f3f3;
+}
+
+.search-input {
+  background-color: #fff;
+  padding: 20rpx;
+}
+
+.search-input view {
+  background-color: #60a1f1;
+  border-radius: 15rpx;
+  padding: 15rpx;
+  font-size: 30rpx;
+  color: #fff;
+  text-align: center;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+}
+
+.m-container {
+  margin-top: 20rpx;
+  background-color: white;
+}
+
+.m-container:last-child {
+  margin-bottom: 30rpx;
+}
+
+.m-footer {
+  padding: 20rpx;
+}
+
+.opt-icon {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.dline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30rpx;
+}
+
+.dline .line {
+  border-top: 1rpx solid #eee;
+  padding: 0rpx 30rpx;
+}
+
+.dline .line-text {
+  padding: 0rpx 30rpx;
+}
+
+.datagrid {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 40rpx 0rpx;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 200rpx;
+  padding: 30rpx;
+  position: relative;
+}
+
+.list-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0rpx;
+  left: 0rpx;
+  right: 0rpx;
+  background-color: #eee;
+  height: 1px;
+}
+
+.list-item .item-content {
+  width: calc(100% - 180rpx);
+  height: 100%;
+  position: relative;
+}
+
+.list-item .item-desc {
+  margin: 20rpx 0rpx;
+  padding-right: 20rpx;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.list-item .item-icon {
+  width: 150rpx;
+  height: 200rpx;
+}
+
+.grid-item .item-icon {
+  width: 200rpx;
+  height: 300rpx;
+}
+
+.list-item .item-footer {
+  position: absolute;
+  bottom: 0;
+}
