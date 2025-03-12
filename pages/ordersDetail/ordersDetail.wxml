@@ -1,0 +1,102 @@
+<wxs src='../../wxs/orders.wxs' module='o' />
+<view>
+  <view>
+
+    <view class='header'>订单状态：{{o.fmtStatus(orders.status)}}</view>
+
+    <view class='m-section shadow' >
+      <view class='section-title'>物流信息</view>
+      <view class='section-content {{showAllLogistics ? "" : orders.logisticsList.length > 0 ? "short-height" : ""}}'>
+        <!-- 模糊遮罩层 -->
+        <view class='collection' wx:if='{{!showAllLogistics && orders.logisticsList.length > 0}}'></view>
+        <view class='form-item form-item-deliver'>
+          <text>物流单号：{{orders.logisticsNo}}，{{orders.deliveryCompanyName}}</text>
+        </view>
+        <block wx:if='{{orders.logisticsList.length > 0}}'>
+          <block wx:for='{{orders.logisticsList}}' wx:key='id'>
+            <view class='form-item form-item-deliver'>
+              <text>{{item.time}}：{{item.content}}</text>
+            </view>
+          </block>
+        </block>
+      </view>
+      <view class='section-footer' wx:if='{{orders.logisticsList.length > 0}}'>
+        <view class='font-30 text-center' bindtap='showAllLogistics'>
+          {{showAllLogistics ? '收起物流' : '显示全部物流'}}
+        </view>
+      </view>
+    </view>
+
+    <view class='m-section shadow'>
+      <view class='section-title'>商品信息</view>
+      <view class='section-content'>
+        <block wx:for="{{orders.detailList}}" wx:key="id">
+
+          <view class='list-item'>
+            <image src='{{server + item.bookCover}}'></image>
+            <view class='item-content'>
+              <view class='item-title font-35'>
+                <view>{{item.bookName}}</view>
+                <view>x1</view>
+              </view>
+              <view class='item-footer font-30'>
+                <view class='font-gray'>租金:￥{{item.price}},押金:￥{{item.deposit}}</view>
+                <view class='font-bold'>小计：￥{{item.totalPrice}}</view>
+              </view>
+            </view>
+          </view>
+
+        </block>
+        <!-- <view class='note'>如您如期归还，押金将全额退还。如有逾期，则每日扣除10%的押金</view> -->
+
+      </view>
+    </view>
+
+    <view class='m-section shadow'>
+      <view class='section-title'>订单信息</view>
+      <view class='section-content'>
+        <view class='form-item'>
+          <text class='form-lable'>租金合计</text>
+          <text class='font-dark-orange font-bold'>￥{{orders.price}}</text>
+        </view>
+        <view class='form-item'>
+          <text class='form-lable'>押金合计</text>
+          <text class='font-dark-orange font-bold'>￥{{orders.deposit}}</text>
+        </view>
+        <view class='form-item'>
+          <text class='form-lable'>下单时间</text>
+          <text>{{orders.placeTime}}</text>
+        </view>
+        <view class='form-item' wx:if='{{orders.status == 10}}'>
+          <text class='form-lable'>交易完成时间</text>
+          <text>{{orders.finishTime}}</text>
+        </view>
+      </view>
+      <view class='section-footer'>
+        <view class='text-right font-35'>
+          共{{orders.detailList.length}}件商品，合计：
+          <text class='font-dark-orange font-bold font-40'>￥{{orders.totalPrice}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class='m-section shadow'>
+      <view class='section-title'>收件人信息</view>
+      <view class='section-content'>
+        <view class='form-item'>
+          <text class='form-lable'>收件人</text>
+          <text>{{orders.receiver}}</text>
+        </view>
+        <view class='form-item'>
+          <text class='form-lable'>联系电话</text>
+          <text>{{orders.receiverPhone}}</text>
+        </view>
+        <view class='form-item'>
+          <text class='form-lable'>收件地址</text>
+          <text>{{orders.receiverAddress}}</text>
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view>

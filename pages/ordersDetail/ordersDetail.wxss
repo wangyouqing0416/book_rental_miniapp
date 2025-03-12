@@ -1,0 +1,171 @@
+page {
+  background-color: #f3f3f3;
+}
+
+.header {
+  padding: 30rpx 30rpx 0rpx 30rpx;
+  font-weight: bold;
+}
+
+.m-section {
+  margin: 20rpx;
+  background-color: #fff;
+  padding: 30rpx;
+  border-radius: 10rpx;
+}
+
+.section-title {
+  position: relative;
+  padding-bottom: 20rpx;
+  font-weight: bold;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #eee;
+}
+
+.section-content {
+  margin-top: 20rpx;
+  position: relative;
+}
+
+.section-footer {
+  position: relative;
+  margin-top: 50rpx;
+  padding-top: 20rpx;
+}
+
+.section-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #eee;
+}
+
+.form-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  font-size: 30rpx;
+}
+
+.form-item-deliver {
+  position: relative;
+}
+
+.form-item-deliver:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #eee;
+}
+
+.form-lable {
+  display: inline-block;
+  width: 200rpx;
+}
+
+.form-item input {
+  width: 100%;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+  padding-bottom: 20rpx;
+  position: relative;
+}
+
+.list-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 130rpx;
+  right: 0;
+  height: 1px;
+  background-color: #eee;
+}
+
+.list-item image {
+  width: 130rpx;
+  height: 130rpx;
+}
+
+.item-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item-content {
+  width: 100%;
+  height: 130rpx;
+  margin-left: 25rpx;
+  position: relative;
+}
+
+.item-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0rpx;
+  left: 0rpx;
+  right: 0rpx;
+}
+
+.bottom-layout {
+  padding: 0rpx 20rpx;
+  box-sizing: border-box;
+}
+
+.btn-solid {
+  display: inline;
+  border: 1rpx solid #1890ff;
+  border-radius: 30rpx;
+  color: #fff;
+  background-color: #1890ff;
+  padding: 15rpx 50rpx;
+  font-weight: bold;
+  font-size: 32rpx;
+}
+
+.btn-solid:active {
+  background-color: #65a0d8;
+}
+
+.note {
+  margin-top: 30rpx;
+  font-size: 30rpx;
+  color: #ff9600;
+}
+
+.short-height {
+  height: 170rpx;
+  overflow: hidden;
+}
+
+.collection {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 50rpx;
+  z-index: 1990;
+  background: linear-gradient(rgba(233, 236, 239, 0.5), white);
+}
