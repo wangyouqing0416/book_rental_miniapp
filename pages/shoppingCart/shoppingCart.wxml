@@ -1,0 +1,40 @@
+<view>
+  <view class='margin-bottom-btn'>
+    <block wx:for='{{dataList}}' wx:key='id'>
+      <view class='card hover shadow'>
+        <view class='card-content' data-id='{{item.id}}' bindtap='toDetail'>
+          <view class='block'>
+            <image src='{{server + item.cover}}'></image>
+            <view class='block-content'>
+              <view class='font-35'>{{item.name}}</view>
+              <view class='abs-bottom font-30 font-dark-orange font-bold'>
+                总价：￥{{item.price + item.deposit}}
+              </view>
+            </view>
+          </view>
+          <view class='font-30 font-gray text-right'>{{item.createTime}}</view>
+        </view>
+        <view class='card-footer'>
+          <checkbox-group data-book-id='{{item.id}}' data-cart-id='{{item.cartId}}' bindchange="checkboxChange">
+            <checkbox value='{{item.id}}' checked='{{checked[item.id]}}'></checkbox>
+
+          </checkbox-group>
+        </view>
+      </view>
+    </block>
+    <!-- 空视图 -->
+    <block wx:if="{{dataList.length == 0}}">
+      <view class='none-view flex'>
+        <view>
+          <image class="empty-view-img" src="/image/no_data.png" />
+          <view class='empty-view-text'>暂无数据</view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view class='bottom-layout'>
+    <view class='footer-btn' bindtap='account'>结算</view>
+  </view>
+
+</view>
