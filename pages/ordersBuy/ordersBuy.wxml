@@ -1,0 +1,55 @@
+<view>
+  <view class='margin-bottom-btn'>
+
+    <view class='m-section shadow'>
+      <view class='section-title'>收件人信息</view>
+      <view class='section-content'>
+        <view class='form-item'>
+          <text class='form-lable'>收件人</text>
+          <input placeholder='请输入收件人姓名' data-type='0' bindinput='formInput' value='{{receiver.name}}'></input>
+        </view>
+        <view class='form-item'>
+          <text class='form-lable'>联系电话</text>
+          <input placeholder='请输入收件人联系电话' type='number' data-type='1' bindinput='formInput' value='{{receiver.phone}}'></input>
+        </view>
+        <view class='form-item'>
+          <text class='form-lable'>收件地址</text>
+          <input placeholder='请输入收件地址' data-type='2' bindinput='formInput' value='{{receiver.address}}'></input>
+        </view>
+      </view>
+    </view>
+
+    <view class='m-section shadow'>
+      <view class='section-title'>商品信息</view>
+      <view class='section-content'>
+        <block wx:for="{{books}}" wx:key="id">
+
+          <view class='list-item'>
+            <image src='{{server + item.cover}}'></image>
+            <view class='item-content'>
+              <view class='item-title font-35'>
+                <view>{{item.name}}</view>
+                <view>x1</view>
+              </view>
+              <view class='item-footer font-30'>
+                <view class='font-gray'>租金:￥{{item.price}},押金:￥{{item.deposit}}</view>
+                <view class='font-bold'>小计：￥{{item.price + item.deposit}}</view>
+              </view>
+            </view>
+          </view>
+
+        </block>
+        <view class='note'>如您如期归还，押金将全额退还。如有逾期，则每日扣除10%的押金</view>
+
+      </view>
+      <view class='section-footer'>
+        <view class='text-right font-35'>共{{books.length}}件商品，合计：
+          <text class='font-dark-orange font-bold font-40'>￥{{totalPrice}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='bottom-layout bottom-layout-divider flex flex-right bg-white'>
+    <view class='btn-solid' bindtap='confirm'>提交订单</view>
+  </view>
+</view>
