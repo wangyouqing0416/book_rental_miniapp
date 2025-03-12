@@ -1,0 +1,4 @@
+<view>
+  <textarea placeholder='说点什么...' bindinput='formInput'></textarea>
+  <view class='md-button button-hover' bindtap='confirm'>发表</view>
+</view>
