@@ -1,0 +1,8 @@
+<view class='flex flex-center height-full'>
+  <view class='content'>
+    <image src='/image/success.png' class='logo'></image>
+    <view class='pd50'>支付成功</view>
+    <view>正在加紧为您安排出单，请耐心等候~</view>
+    <button class="md-button" bindtap='backToHome'>回到首页</button>
+  </view>
+</view>
