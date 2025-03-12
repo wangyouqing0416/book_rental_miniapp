@@ -1,0 +1,35 @@
+<view>
+  <view class='m-container'>
+    <view class='datalist'>
+      <block wx:for='{{list}}' wx:key='id'>
+        <view class='list-item hover' data-id='{{item.id}}' bindtap='toDetail'>
+          <image class='item-icon' src='{{server + item.cover}}'></image>
+          <view class='item-content'>
+            <view class='item-title ellipsis font-35'>{{item.name}}</view>
+            <view class='font-gray font-30'>出版社：{{item.publisher}}</view>
+            <view class='font-gray font-30'>作者：{{item.author}}</view>
+            <!-- <view class='item-desc font-30 font-gray'>{{item.description}}</view> -->
+            <view class='item-footer font-30 font-gray'>
+              租金：
+              <text class='font-dark-orange font-bold'>￥{{item.price}}</text> 元，
+              租期：
+              <text class='font-theme font-bold'>{{item.deadline}}</text> 天
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 空视图 -->
+  <block wx:if="{{list.length == 0}}">
+    <view class='none-view flex'>
+      <view>
+        <image class="empty-view-img" src="/image/no_data.png" />
+        <view class='empty-view-text'>暂无数据</view>
+      </view>
+    </view>
+  </block>
+
+
+</view>
