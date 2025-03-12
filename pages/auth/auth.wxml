@@ -1,0 +1,8 @@
+<view class='flex flex-center height-full'>
+  <view class='content'>
+    <image src='/image/logo.png' class='logo'></image>
+    <view class='pd50'>Hi，请登录</view>
+    <view>授权后，可以更好的体验我们哦~</view>
+    <button class="md-button" open-type="getUserInfo" bindgetuserinfo="success">授权登录</button>
+  </view>
+</view>
