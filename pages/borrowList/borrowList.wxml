@@ -1,0 +1,49 @@
+<view>
+  <view class='tabs'>
+    <view class='tab {{activeIndex == 0 ? "active":""}}' data-index='0' bindtap='tabClick'>全部</view>
+    <view class='tab {{activeIndex == 1 ? "active":""}}' data-index='1' bindtap='tabClick'>租借中</view>
+    <view class='tab {{activeIndex == 2 ? "active":""}}' data-index='2' bindtap='tabClick'>还书中</view>
+    <view class='tab {{activeIndex == 3 ? "active":""}}' data-index='3' bindtap='tabClick'>已归还</view>
+  </view>
+  <view class='tab-content'>
+    <swiper indicator-dots="{{false}}" current='{{activeIndex}}' bindchange='swiperChange'>
+      <swiper-item wx:for='{{[1,2,3,4]}}' wx:for-item='swiper' wx:key='id'>
+        <!-- <block wx:for='{{activeIndex == 0 ? allList : activeIndex == 1 ? zjList : activeIndex == 2 ? hsList : doneList}}' wx:key='id'> -->
+        <block wx:for='{{dataSource[activeIndex]}}' wx:key='id'>
+          <view class='card hover shadow'>
+            <view class='card-title'>
+              <view>租单号：{{item.borrowNo}}</view>
+              <view class='{{item.status == 2 ? "font-success" : "font-dark-orange"}}'>{{item.status == 0 ? '租借中' : item.status == 1 ? '还书中' : '已归还'}}</view>
+            </view>
+            <view class='card-content'>
+              <view class='block'>
+                <image src='{{server + item.bookCover}}'></image>
+                <view class='block-content'>
+                  <view class='font-35'>{{item.bookName}}</view>
+                  <view class='abs-bottom font-30 font-dark-orange font-bold'>
+                    总价：￥{{item.totalPrice}}
+                  </view>
+                </view>
+              </view>
+              <view class='font-30 font-gray text-right'>{{item.createTime}}</view>
+            </view>
+            <view class='card-footer'>
+              <view class='font-30'>最后还书日：{{item.deadline}}</view>
+              <view class='footer-btn' wx:if='{{item.status == 0}}' data-id='{{item.id}}' catchtap='revert'>还书</view>
+            </view>
+          </view>
+        </block>
+        <!-- 空视图 -->
+        <block wx:if="{{dataSource[activeIndex].length == 0}}">
+          <view class='none-view flex'>
+            <view>
+              <image class="empty-view-img" src="/image/no_data.png" />
+              <view class='empty-view-text'>暂无数据</view>
+            </view>
+          </view>
+        </block>
+
+      </swiper-item>
+    </swiper>
+  </view>
+</view>
