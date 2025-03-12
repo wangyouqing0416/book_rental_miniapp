@@ -1,0 +1,4 @@
+<view>
+  <input type='number' placeholder='请输入接收短信的手机号码' bindinput='phoneInput'></input>
+  <view class='md-button button-hover' bindtap='confirm'>确认</view>
+</view>
