@@ -1,0 +1,84 @@
+<view>
+  <view>
+    <view class='header'>订单状态：{{0 == data.status ? '还书中' : '已完成'}}</view>
+
+    <view class='m-section shadow'>
+      <view class='section-title'>物流信息</view>
+      <view class='section-content'>
+        <view class='row'>
+          <text class='row-lable'>物流单号</text>
+          <text>{{data.logisticsNo}}</text>
+        </view>
+        <view class='row'>
+          <text class='row-lable'>快递公司</text>
+          <text>{{data.deliveryCompanyName}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class='m-section shadow'>
+      <view class='section-title'>结算单</view>
+      <view class='section-content'>
+        <view class='row'>
+          <text class='row-lable'>租期</text>
+          <text>{{data.borrowDay}} 天</text>
+          <text class='font-gray'>（{{data.borrowStart}} ~ {{data.borrowEnd}}）</text>
+        </view>
+        <view wx:if='{{data.isDelay}}'>
+          <view class='row'>
+            <text class='row-lable'>逾期</text>
+            <text>{{data.delay}} 天</text>
+            <text class='font-gray'>（租期截止：{{data.shortDeadline}}）</text>
+          </view>
+          <view class='row'>
+            <text class='row-lable'>逾期费用</text>
+            <text class='font-dark-orange font-bold'>￥{{data.delayCost}}</text>
+          </view>
+        </view>
+        <view class='row'>
+          <text class='row-lable'>应退还押金</text>
+          <text class='font-dark-orange font-bold'>￥{{data.revertMoney}}</text>
+          <text class='font-gray'>（押金：￥{{data.deposit}}）</text>
+        </view>
+      </view>
+    </view>
+
+    <view class='m-section shadow'>
+      <view class='section-title'>商品信息</view>
+      <view class='section-content'>
+        <view class='list-item'>
+          <image src='{{server + data.bookCover}}'></image>
+          <view class='item-content'>
+            <view class='item-title font-35'>
+              <view>{{data.bookName}}</view>
+              <view>x1</view>
+            </view>
+            <view class='item-footer font-30'>
+              <view class='font-gray'>租金:￥{{data.borrow.price}},押金:￥{{data.deposit}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='m-section shadow'>
+      <view class='section-title'>收件人信息</view>
+      <view class='section-content'>
+        <view class='row'>
+          <text class='row-lable'>收件人</text>
+          <text>{{data.receiver}}</text>
+        </view>
+        <view class='row'>
+          <text class='row-lable'>联系电话</text>
+          <text>{{data.receiverPhone}}</text>
+        </view>
+        <view class='row'>
+          <text class='row-lable'>收件地址</text>
+          <text>{{data.receiverAddress}}</text>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+</view>
