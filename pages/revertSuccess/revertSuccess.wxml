@@ -1,0 +1,8 @@
+<view class='flex flex-center height-full'>
+  <view class='content'>
+    <image src='/image/success.png' class='logo'></image>
+    <view class='pd50'>提交成功</view>
+    <view>商家验收通过后，押金自动结算~</view>
+    <button class="md-button" bindtap='back'>我知道了</button>
+  </view>
+</view>
